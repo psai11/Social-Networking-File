@@ -15,13 +15,13 @@ if(isset($_POST['post'])) {
 		<a href="<?php echo $userLoggedIn; ?>"> <img src="<?php echo $user['PROFILE_PIC']; ?>"> </a>
 
 		<div class="user_details_left_right">
-			<a href="<?php echo $userLoggedIn; ?>">
-				<?php 
-				echo $user['NAME'];
-				?>
-			</a>
+			<?php 
+			echo $user['NAME'];
+			?>
 			<br>
-			<?php echo "@".$user['USERNAME']."<br>"; ?>
+			<a href="<?php echo $userLoggedIn; ?>">
+				<?php echo "@".$user['USERNAME']."<br>"; ?>
+			</a>
 		</div>
 
 	</div>
@@ -34,17 +34,17 @@ if(isset($_POST['post'])) {
 			
 		</form>
 
-		<?php  
 
-		$user_obj = new User($con, $userLoggedIn);
-		echo $user_obj->getName();
+		<?php 
 
+		$post  = new Post($con, $userLoggedIn);
+		$post->loadPostsFriends();
 		?>
 
 
 
-	</div>
 
+	</div>
 
 
 	</div>
