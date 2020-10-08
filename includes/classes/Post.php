@@ -36,12 +36,24 @@ class Post {
 	}
 
 
-	public function loadPostsFriends() {
+	public function loadPostsFriends($data,$limit) {
+
+		$page = $data['page'];
+		$userLoggedIn = $this->user_obj->getUsername();
+
+		if ($page == 1) 
+			$start = 0;
+		else
+			$start = ($page - 1) * $limit;
+
 
 		$str = ""; //String to return
 		$data_query = mysqli_query($this->con, "SELECT * FROM MEDIA WHERE DELETED='no' ORDER BY ID DESC");
 
 		if(mysqli_num_rows($data_query) > 0) {
+
+			$num_iterations = 0; //number of results checked not necessarily posted
+			$count = 1;			
 
 			while($row = mysqli_fetch_array($data_query)) {
 				$id = $row['ID'];
@@ -59,6 +71,17 @@ class Post {
 					$user_to = "to <a href='" .$row['USER_TO']."'>".$user_to_name . "</a>";
 				}
 
+				if($num_iterations++ < $start) 
+					continue;
+
+
+				//Once 10 posts have been loaded, break
+				if($count > $limit) {
+					break;
+				}
+				else {
+					$count++;
+				}
 
 
 
@@ -148,6 +171,14 @@ class Post {
 						<hr>";
 
 			}
+
+			if($count > $limit)
+				$str .= "<input type='hidden' class='nextPage' value='" . ($page + 1) . "'>
+							<input type='hidden' class='noMorePosts' value='false'>";
+			else
+				$str .= "<input type='hidden' class='noMorePosts' value='true'><p style='text->align: centre;'> No more posts to show! </p>";
+
+
 
 		}
 
