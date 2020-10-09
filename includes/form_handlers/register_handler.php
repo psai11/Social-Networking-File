@@ -100,7 +100,7 @@ if (isset($_POST["reg_button"])){
 		else if ($rand ==16 )
 			$profile_pic="assets/images/profile_pics/default/head_wisteria.png";
 	
-		$query = mysqli_query($con,"INSERT INTO USER VALUES('','$username','$password','$fname','$gender','$date','$profile_pic')");
+		$query = mysqli_query($con,"INSERT INTO USER VALUES('','$username','$password','$fname','$gender','$date','$profile_pic',',')");
 
 		array_push($error_array, "<span>You are all set! Go ahead and login!</span></br>");
 	}
