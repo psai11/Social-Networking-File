@@ -1,7 +1,5 @@
 <?php 
-include("includes/header.php");
-include("includes/classes/User.php");
-include("includes/classes/Post.php");
+require_once("includes/header.php");
 
 
 if(isset($_POST['post'])) {
