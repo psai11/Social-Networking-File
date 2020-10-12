@@ -126,7 +126,7 @@ textarea:focus {
 
 .post_form input[type="submit"] {
 	width: 11%;
-	height: 70px;
+	height: 60px;
 	border: none;
 	border-radius: 5px; 
 	background-color: #9fa3a6;
@@ -315,3 +315,25 @@ textarea:focus {
 	border: none;
 	color: #fff; 
 }
+
+.delete_button {
+	height: 22px;
+	width: 22px;
+	padding: 0px;
+	float: right;
+	border-radius: 4px;
+	right: -15px;
+	position: relative;
+}
+
+.profile_main_column {
+	min-width: 675px;
+	float: left;
+	width: 70%;
+	z-index: -1;
+}
+
+.profile_info_bottom {
+	margin: 13 0 0 10px;
+}
+
