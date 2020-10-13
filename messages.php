@@ -13,6 +13,16 @@ else {
 
 if($user_to != "new")
 	$user_to_obj = new user($con, $user_to);
+
+if(isset($_POST['post_message'])) {
+
+	if(isset($_POST['message_body'])) {
+		$body = mysqli_real_escape_string($con, $_POST['message_body']);
+		$date = date("Y-m-d H:i:s");
+		$message_obj->sendMessage($user_to,$body,$date);
+	}
+
+}
 ?>
 
 <div class="user_details column">
@@ -31,16 +41,24 @@ if($user_to != "new")
 
 <div class="main_column column" id="main_column">
 	<?php  
-	if($user_to != "new")
+	if($user_to != "new") {
 		echo "<h4>You and <a href='$user_to'>" . $user_to_obj->getName() . "</a></h4><hr><br>";
+		echo "<div class='loaded_messages'>";
+			echo $message_obj->getMessages($user_to);
+		echo "</div>";
+	}
+	else {
+		echo "<h4>New Message</h4>";
+	}
 	?>
 
-	<div class="loaded_messages">
+
+	<div class="message_post">
 		<form action="" method="POST">
 			<?php  
 			if($user_to == "new") {
 				echo "Select the friend you'd like to chat with... <br><br>";
-				echo "To <input type='text' >";
+				echo "To: <input type='text' >";
 				echo "<div class='results'></div>";
 			}
 			else {
