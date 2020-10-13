@@ -337,3 +337,48 @@ textarea:focus {
 	margin: 13 0 0 10px;
 }
 
+
+#message_textarea {
+	width: 80%;
+	margin-right: 8px;
+	border-radius: 5px;
+	border: 1px solid #D3D3D3;
+	font-size: 12px;
+}
+
+#message_submit {
+	height: 50px;
+    width: 120px;
+    margin: 0;
+    position: absolute;
+    border-radius: 5px;
+	border: none;
+	background-color: #9fa3a6;
+	font-family: 'Bellota-BoldItalic',sans-serif;
+	color: #424b52;
+	text-shadow: #595db0 1.5px 1.5px 2px;
+	font-size: 90%;
+}
+
+.message {
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 5px 10px;
+	display: inline-block;
+	color: #fff;
+	font-size: 200%
+}
+
+.message#blue {
+	background-color: #3498DB;
+	border-color: #2980b9;
+	float: right;
+	margin-bottom: 5px;
+}
+
+.message#green {
+	background-color: #2ECC71;
+	border-color: #27AE60;
+	float: left;
+	margin-bottom: 5px;
+}

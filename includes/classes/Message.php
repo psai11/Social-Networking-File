@@ -37,18 +37,19 @@ class Message {
 	public function getMessages($otherUser) {
 		$userLoggedIn = $this->user_obj->getUsername();
 		$data = "";
-
+ 
 		$query = mysqli_query($this->con, "UPDATE MESSAGES SET OPENED='yes' WHERE USER_TO='$userLoggedIn' AND USER_FROM='$otherUser'");
-
+ 
 		$get_messages_query = mysqli_query($this->con, "SELECT * FROM MESSAGES WHERE (USER_TO='$userLoggedIn' AND USER_FROM='$otherUser') OR (USER_FROM='$userLoggedIn' AND USER_TO='$otherUser')");
-
+ 
 		while($row = mysqli_fetch_array($get_messages_query)) {
 			$user_to = $row['USER_TO'];
 			$user_from = $row['USER_FROM'];
 			$body = $row['BODY'];
-
+			$id = $row['ID'];
+ 
 			$div_top = ($user_to == $userLoggedIn) ? "<div class='message' id='green'>" : "<div class='message' id='blue'>";
-			$data = $data . $div_top . $body . "</div><br><br>";
+			$data = $data . $div_top . $body . "</div><br><br><br>";
 		}
 		return $data;
 	}
