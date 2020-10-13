@@ -12,7 +12,7 @@ body {
 	background-color: #E6EAE8;
 }
 
-a{
+a:hover {
 	color: #20AAE5;
 	text-decoration: none;
 }
@@ -363,10 +363,11 @@ textarea:focus {
 .message {
 	border: 1px solid #000;
 	border-radius: 5px;
-	padding: 5px 10px;
+	padding: 9px 12px;
 	display: inline-block;
 	color: #fff;
-	font-size: 200%
+	font-size: 150%;
+	max-width: 600px;
 }
 
 .message#blue {
@@ -382,3 +383,52 @@ textarea:focus {
 	float: left;
 	margin-bottom: 5px;
 }
+
+.loaded_messages {
+	height: 65%;
+	min-height: 300px;
+	max-height: 400px;
+	overflow: scroll;
+	margin-bottom: 10px;
+}
+
+.loaded_conversations {
+	max-height: 216px;
+	overflow: scroll;
+}
+
+.user_found_messages {
+	border-bottom: 1px solid #D3D3D3;
+	padding: 8px 8px 10px 8px;
+}
+
+.user_found_messages:hover {
+	background-color: #D3D3D3;
+}
+
+.user_found_messages img {
+	height: 40px;
+	float: left;
+}
+
+#grey {
+	color: #8C8C8C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
