@@ -49,7 +49,7 @@ else {
 			<a href="index.php">
 				<i class="fa fa-home fa-lg"></i>
 			</a>
-			<a href="#">
+			<a href="messages.php">
 				<i class="fa fa-envelope fa-lg"></i>
 			</a>
 			<a href="#">
