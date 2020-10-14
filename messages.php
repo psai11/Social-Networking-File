@@ -5,6 +5,7 @@ $message_obj = new Message($con, $userLoggedIn);
 
 if(isset($_GET['u']))
 	$user_to = $_GET['u'];
+
 else {
 	$user_to = $message_obj->getMostRecentUser();
 	if($user_to == false)
@@ -58,7 +59,11 @@ if(isset($_POST['post_message'])) {
 			<?php  
 			if($user_to == "new") {
 				echo "Select the friend you'd like to chat with... <br><br>";
-				echo "To: <input type='text' >";
+				?>
+
+				To: <input type='text' onkeyup='getUsers(this.value, "<?php echo $userLoggedIn; ?>")' name='q' placeholder='Name' autocomplete='off' id='search_text_input'>
+				
+				<?php
 				echo "<div class='results'></div>";
 			}
 			else {

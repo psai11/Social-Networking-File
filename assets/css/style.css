@@ -415,7 +415,37 @@ textarea:focus {
 	color: #8C8C8C;
 }
 
+.resultDisplay {
+	padding: 5px 5px 0 5px;
+	height: 60px;
+	border-bottom: 1px solid #D3D3D3;
+}
 
+.resultDisplay a {
+	float: none;
+}
+
+.resultDisplay:hover {
+	background-color: #EBEBEB;
+	text-decoration: none;
+}
+
+.liveSearchProfilePic img {
+	height: 50px;
+	border-radius: 25px;
+	margin: 1px 12px 0 2px;
+	float: left;
+}
+
+.liveSearchText {
+	background-color: transparent;
+	color: #1E96CA;
+}
+
+.liveSearchText p{
+	margin-left: 10px;
+	font-size: 12px;
+}
 
 
 
