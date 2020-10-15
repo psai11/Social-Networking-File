@@ -132,8 +132,6 @@ class Message {
 		array_push($details_array, $time_message);
 
 		return $details_array;
-		
-		
 	}
 
 	public function getConvos() {
@@ -169,7 +167,75 @@ class Message {
 		}
 
 		return $return_string;
+	}
 
+	public function getConvosDropdown($data, $limit) {
+
+		$page = $data['page'];
+		$userLoggedIn  = $this->user_obj->getUsername();
+		$return_string = "";
+		$convos = array();
+
+		if($page == 1)
+			$start = 0;
+		else
+			$start = ($page - 1) * $limit;
+
+		$set_viewed_query = mysqli_query($this->con, "UPDATE MESSAGES SET VIEWED='yes' WHERE USER_TO ='$userLoggedIn'");
+
+
+		$query = mysqli_query($this->con, "SELECT USER_TO,USER_FROM FROM MESSAGES WHERE USER_TO='$userLoggedIn' OR USER_FROM='$userLoggedIn' ORDER BY ID DESC");
+
+		while ($row= mysqli_fetch_array($query)) {
+			$user_to_push = ($row['USER_TO'] != $userLoggedIn) ? $row['USER_TO'] :$row['USER_FROM'];
+
+			if(!in_array($user_to_push, $convos)) {
+				array_push($convos, $user_to_push);
+			}
+		}
+
+		$num_iterations = 0; //Number of messages checked
+		$count = 1; //Number of messages posted
+
+		foreach($convos as $username) {
+
+			if($num_iterations++ < $start)
+				continue;
+
+			if($count > $limit)
+				break;
+			else
+				$count++;
+
+			$is_unread_query = mysqli_query($this->con, "SELECT OPENED FROM MESSAGES WHERE USER_TO='$userLoggedIn' AND USER_FROM='$username' ORDER BY ID DESC");
+
+			$row = mysqli_fetch_array($is_unread_query);
+			$style = (isset($row['OPENED']) && $row['OPENED'] == 'no') ? "background-color: #DDEDFF;" : "";
+
+			$user_found_obj = new User($this->con, $username);
+			$latest_message_details = $this->getLatestMessage($userLoggedIn, $username);
+
+			$dots = (strlen($latest_message_details[1]) >= 12) ? "..." : "";
+			$split = str_split($latest_message_details[1], 12);
+			$split = $split[0] . $dots;
+
+			$return_string .= "<a href='messages.php?u=$username'> 
+								<div class='user_found_messages' style='" . $style . "'>
+								<img src='" . $user_found_obj->getProfilePic() . "' style='border-radius: 5px; margin-right: 5px;'>
+								" . $user_found_obj->getName() . "
+								<span class='timestamp_smaller' id='grey'> " . $latest_message_details[2] . "</span>
+								<p id='grey' style='margin: 0;'>" . $latest_message_details[0] . $split . "</p>
+								</div>
+								</a>";
+		}
+
+		//If posts were loaded
+		if($count > $limit)
+			$return_string .= "<input type='hidden' class='nextPageDropdownData' value='" . ($page + 1) . "'><input type='hidden' class='noMoreDropdownData' value='false'>";
+		else
+			$return_string .= "<input type='hidden' class='noMoreDropdownData' value='true'> <p style='text-align: center;'>No more messages to load!</p>";
+
+		return $return_string;
 	}
 }
 
