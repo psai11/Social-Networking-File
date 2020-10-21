@@ -52,6 +52,10 @@ else {
 				//Unread notifications
 				$notifications = new Notification($con, $userLoggedIn);
 				$num_notifications = $notifications->getUnreadNumber();
+
+				//New friend requests
+				$user_obj = new User($con, $userLoggedIn);
+				$num_requests = $user_obj->getNumberOfFriendRequests();
 			?>
 
 
@@ -77,6 +81,10 @@ else {
 			</a>
 			<a href="requests.php">
 				<i class="fa fa-users fa-lg"></i>
+				<?php
+				if($num_requests > 0)
+					echo '<span class="notification_badge" id="unread_requests">' . $num_requests .'</span>';
+				?>
 			</a>
 			<a href="#">
 				<i class="fa fa-cog fa-lg"></i>

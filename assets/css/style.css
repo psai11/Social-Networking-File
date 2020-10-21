@@ -479,10 +479,10 @@ textarea:focus {
 	white-space: nowrap;
 	vertical-align: baseline;
 	background-color: #F00;
-	border-radius: 10px;
+	border-radius: 15px;
 	position: absolute;
-	left: 7px;
-	top: 9px;
+	left: 9px;
+	top: -9px;
 }
 
 .resultDisplayNotification {
