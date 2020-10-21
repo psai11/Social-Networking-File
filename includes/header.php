@@ -43,6 +43,13 @@ else {
 		</div>
 
 		<nav>
+			<?php  
+				//Unread messages
+				$messages = new Message($con, $userLoggedIn);
+				$num_messages = $messages->getUnreadNumber();
+			?>
+
+
 			<a href="<?php echo $userLoggedIn; ?>">
 				<?php echo $user['NAME']; ?>
 			</a>
@@ -51,6 +58,10 @@ else {
 			</a>
 			<a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'message')">
 				<i class="fa fa-envelope fa-lg"></i>
+				<?php
+				if($num_messages > 0)
+					echo '<span class="notification_badge" id="unread_message">' . $num_messages .'</span>';
+				?>
 			</a>
 			<a href="#">
 				<i class="fa fa-bell-o fa-lg"></i>
@@ -124,6 +135,9 @@ else {
 	 
 	    //Check if the element is in view
 	    function isElementInView (el) {
+	    	if(el==null)
+	    		return;
+
 	        var rect = el.getBoundingClientRect();
 	 
 	        return (

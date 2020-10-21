@@ -237,6 +237,12 @@ class Message {
 
 		return $return_string;
 	}
+
+	public function getUnreadNumber() {
+		$userLoggedIn = $this->user_obj->getUsername();
+		$query = mysqli_query($this->con, "SELECT * FROM MESSAGES WHERE VIEWED = 'no' AND USER_TO='$userLoggedIn'");
+		return mysqli_num_rows($query);
+	}
 }
 
 ?>
