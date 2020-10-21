@@ -338,6 +338,10 @@ textarea:focus {
 }
 
 
+.form-control {
+	width: 100%;
+}
+
 #message_textarea {
 	width: 80%;
 	margin-right: 8px;
@@ -481,7 +485,23 @@ textarea:focus {
 	top: 9px;
 }
 
+.resultDisplayNotification {
+	height: auto;
+	color: #1485BD;
+	padding-bottom: 7px;
+}
 
+.resultDisplayNotification img {
+	height: 40px;
+	border-radius: 5px;
+	margin: 1px 12px 0px 2px;
+	float: left;
+}
+
+.timestamp_smaller {
+	font-size: 85%;
+	margin: 0;
+}
 
 
 

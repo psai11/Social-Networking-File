@@ -2,6 +2,7 @@
 	require 'config/config.php'; 
 	include("includes/classes/User.php");
 	include("includes/classes/Post.php");
+	include("includes/classes/Notification.php");
 
 	if (isset($_SESSION['username'])){
 		$userLoggedIn = $_SESSION['username'];
@@ -51,12 +52,38 @@
 	$row = mysqli_fetch_array($user_query);
 
 	$posted_to = $row['ADDED_BY'];
+	$user_to = $row['USER_TO'];
 
 	if(isset($_POST['postComment' . $post_id])) {
 		$post_body = $_POST['post_body'];
 		$post_body = mysqli_escape_string($con, $post_body);
 		$date_time_now = date("Y-m-d H:i:s");
 		$insert_post = mysqli_query($con, "INSERT INTO MEDIA_COMMENTS VALUES('','$post_body','$userLoggedIn','$posted_to','$date_time_now','no','$post_id')");
+
+		if($posted_to != $userLoggedIn) {
+			$notification = new Notification($con, $userLoggedIn);
+			$notification->insertNotification($post_id, $posted_to, "comment");
+		}
+		
+		if($user_to != 'none' && $user_to != $userLoggedIn) {
+			$notification = new Notification($con, $userLoggedIn);
+			$notification->insertNotification($post_id, $user_to, "profile_comment");	
+		}
+
+		$get_commenters = mysqli_query($con, "SELECT * FROM MEDIA_COMMENTS WHERE POST_ID='$post_id'");
+		$notified_users = array();
+		while($row = mysqli_fetch_array($get_commenters)) {
+
+			if($row['POSTED_BY'] != $posted_to && $row['POSTED_BY'] != $user_to
+				&& $row['POSTED_BY'] != $userLoggedIn && !in_array($row['POSTED_BY'], $notified_users)) {
+				$notification = new Notification($con, $userLoggedIn);
+				$notification->insertNotification($post_id, $row['POSTED_BY'], "comment_non_owner"); 
+
+				array_push($notified_users, $row['POSTED_BY']);
+			}
+
+		}
+
 		echo "<p>Comment Posted! </p>";
 	}
 	?>
