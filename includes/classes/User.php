@@ -31,6 +31,12 @@ class User {
 		return $this->user['FRIEND_ARRAY'];
 	}
 
+	public function getNumOfFriends() {
+		$query = $this->user['FRIEND_ARRAY'];
+		$names = explode(",",$query);
+		return count($names);
+	}
+
 	public function isFriend($username_to_check) {
 		$usernameComma = "," . $username_to_check . ",";
 

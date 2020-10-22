@@ -421,7 +421,7 @@ textarea:focus {
 
 .resultDisplay {
 	padding: 5px 5px 0 5px;
-	height: 60px;
+	height: 70px;
 	border-bottom: 1px solid #D3D3D3;
 }
 
@@ -437,16 +437,18 @@ textarea:focus {
 .liveSearchProfilePic img {
 	height: 50px;
 	border-radius: 25px;
-	margin: 1px 12px 0 2px;
+	margin: 7px 12px 0 2px;
 	float: left;
 }
 
 .liveSearchText {
+	padding-top: 11px;
 	background-color: transparent;
 	color: #1E96CA;
 }
 
 .liveSearchText p{
+	margin-top: -2px;
 	margin-left: 10px;
 	font-size: 12px;
 }
@@ -501,6 +503,59 @@ textarea:focus {
 .timestamp_smaller {
 	font-size: 85%;
 	margin: 0;
+}
+
+.search{
+	margin:8px 0 0 15%;
+}
+
+.search #search_text_input {
+	border: thin solid #E5E5E5;
+	float: left;
+	height: 27px;
+	outline: 0;
+	width: 100px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius:  0px;
+}
+
+.button_holder {
+	background-color: #F1F1F1;
+	border: thin solid #E5E5E5;
+	cursor: pointer;
+	float: left;
+	height: 25px;
+	text-align: center;
+	width: 50px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+.button_holder img {
+	margin-top: 1px;
+	width: 20px;
+}
+
+.search_results {
+	background-color: #fff;
+	border: 1px solid #DADADA;
+	border-bottom: none;
+	border-top: none;
+	margin-top: 28px;
+}
+
+.search_results_footer {
+	margin-top: -9px;
+	padding: 7px 4px 0 4px;
+	height: 25px;
+	border: 1px solid #DADADA;
+	border-top: none;
+	background-color: #9fa3a6;
+	text-align: center;
+}
+
+.search_results_footer a {
+	color: #FFF;
 }
 
 
