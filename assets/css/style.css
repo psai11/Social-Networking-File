@@ -557,9 +557,34 @@ textarea:focus {
 	color: #fff;
 }
 
+.search_result {
+	padding: 10px;
+	height: 100px;
+}
 
+.searchPageFriendButtons {
+	float: right;
+}
 
+.result_profile_pic {
+	float: left;
+	margin-right: 10px;
+}
 
+.result_profile_pic img {
+	border-radius: 5px;
+}
+
+#search_hr {
+	margin-bottom: 0px;
+}
+
+.searchPageFriendButtons input[type="submit"] {
+	border: none;
+	padding: 7px 12px;
+	border-radius: 5px;
+	color: #fff;
+}
 
 
 
