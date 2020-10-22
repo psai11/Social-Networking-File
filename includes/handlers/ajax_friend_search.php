@@ -43,7 +43,7 @@ if($query != "") {
 							<p id='grey'>" . $mutual_friends ."</p> 
 						</div>
 					</a>
-				</div>";
+					</div>";
 		}
 	}
 }

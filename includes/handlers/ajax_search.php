@@ -29,7 +29,7 @@ if($query != "") {
 		else
 			$mutual_friends = $user->getNumOfFriends() . " friends in common";
 
-		echo "<div class='result_display'>
+		echo "<div class='resultDisplay'>
 				<a href='" . $row['USERNAME'] . "' style='color: #1485BD'>
 					<div class='liveSearchProfilePic'>
 						<img src='" . $row['PROFILE_PIC'] . "'>

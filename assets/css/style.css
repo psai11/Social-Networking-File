@@ -437,18 +437,17 @@ textarea:focus {
 .liveSearchProfilePic img {
 	height: 50px;
 	border-radius: 25px;
-	margin: 7px 12px 0 2px;
+	margin: 1px 12px 0 2px;
 	float: left;
 }
 
 .liveSearchText {
-	padding-top: 11px;
+	padding-top: 5px;
 	background-color: transparent;
 	color: #1E96CA;
 }
 
 .liveSearchText p{
-	margin-top: -2px;
 	margin-left: 10px;
 	font-size: 12px;
 }
@@ -545,21 +544,18 @@ textarea:focus {
 }
 
 .search_results_footer {
-	margin-top: -9px;
-	padding: 7px 4px 0 4px;
-	height: 25px;
+	margin-top: 1px;
+	padding: 10px 4px 0 4px;
+	height: 20px;
 	border: 1px solid #DADADA;
 	border-top: none;
-	background-color: #9fa3a6;
+	background-color: #20AAE5;
 	text-align: center;
 }
 
 .search_results_footer a {
-	color: #FFF;
+	color: #fff;
 }
-
-
-
 
 
 
