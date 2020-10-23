@@ -147,11 +147,10 @@ if(isset($_POST['post_message'])) {
 						$i = $user_array_explode[$x];
 						$query = mysqli_query($con, "SELECT * FROM USER WHERE USERNAME='$i'");
 						$row = mysqli_fetch_array($query);
+						$mutual_friends="";
 
 						if($row['USERNAME'] != $userLoggedIn)
 							$mutual_friends = $user->getMutualFriends($row['USERNAME']) . " friends in common";
-						else
-							$mutual_friends = $user->getNumOfFriends() . " friends in common";
 
 						echo "<div class='resultDisplay'>
 								<a href='" . $row['USERNAME'] . "' style='color: #1485BD'>

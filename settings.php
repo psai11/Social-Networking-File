@@ -5,7 +5,7 @@ include("includes/form_handlers/settings_handler.php");
 
 <div class="main_column column">
 	
-	<h4>Acoount Settings</h4>
+	<h4>Account Settings</h4>
 	<?php  
 	echo "<img src='" . $user['PROFILE_PIC'] . "' id='small_profile_pic'>";	
 	?>
