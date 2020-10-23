@@ -59,6 +59,8 @@ if(isset($_POST['post_message'])) {
 		<img src="<?php echo $user_array['PROFILE_PIC']; ?>">
 
 		<div class="profile_info">
+			<p><?php echo "Name: " . $user_array['NAME']; ?></p>
+			<p><?php echo "Username: @" . $user_array['USERNAME']; ?></p>
 			<p><?php echo "Friends: " . $num_friends ?></p>
 
 		</div>
@@ -101,6 +103,7 @@ if(isset($_POST['post_message'])) {
 		<ul class="nav nav-tabs" role="tablist" id="profileTabs">
 		  <li role="presentation" class="active"><a href="#newsfeed_div" aria-controls="newsfeed_div" role="tab" data-toggle="tab">Newsfeed</a></li>
 		  <li role="presentation"><a href="#messages_div" aria-controls="messages_div" role="tab" data-toggle="tab">Messages</a></li>
+		  <li role="presentation"><a href="#friends_div" aria-controls="friends_div" role="tab" data-toggle="tab">Friends</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -131,6 +134,40 @@ if(isset($_POST['post_message'])) {
 					var div = document.getElementById("scroll_messages");
 					div.scrollTop = div.scrollHeight;
 				</script>
+			</div>
+
+			<div role="tabpanel" class="tab-pane fade" id="friends_div">
+				<?php 
+					$user = new User($con, $username);
+					$user_array = $user->getFriendArray();
+					$user_array_explode = explode(",", $user_array);
+					$arrlength = count($user_array_explode) -1;
+
+					for($x = 1; $x < $arrlength; $x++)  {
+						$i = $user_array_explode[$x];
+						$query = mysqli_query($con, "SELECT * FROM USER WHERE USERNAME='$i'");
+						$row = mysqli_fetch_array($query);
+
+						if($row['USERNAME'] != $userLoggedIn)
+							$mutual_friends = $user->getMutualFriends($row['USERNAME']) . " friends in common";
+						else
+							$mutual_friends = $user->getNumOfFriends() . " friends in common";
+
+						echo "<div class='resultDisplay'>
+								<a href='" . $row['USERNAME'] . "' style='color: #1485BD'>
+									<div class='liveSearchProfilePic'>
+										<img src='" . $row['PROFILE_PIC'] . "'>
+									</div>
+
+									<div class='liveSearchText'>
+										" . $row['NAME'] . "
+										<p>" . $row['USERNAME'] . "</p>
+										<p id='grey'>" . $mutual_friends . "</p>
+				 					</div>
+								</a>
+								</div>";
+					}
+				?>
 			</div>
 
 		</div>
