@@ -611,6 +611,9 @@ textarea:focus {
 	color: #fff;
 }
 
+.post_body iframe {
+	align-self: center;
+}
 
 
 
