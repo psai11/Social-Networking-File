@@ -8,7 +8,7 @@ class Post {
 		$this->user_obj = new User($con, $user);
 	}
 
-	public function submitPost($body, $user_to) {
+	public function submitPost($body, $user_to, $imageName) {
 		$body = strip_tags($body); //removes html tags
 		$body = mysqli_real_escape_string($this->con, $body);
 		$body = str_replace('\r\n', '\n', $body);
@@ -45,7 +45,7 @@ class Post {
 			}
 
 			//insert post in DB
-			$query = mysqli_query($this->con, "INSERT INTO MEDIA VALUES('','$body','$added_by','$user_to','$date_added','no','0')");
+			$query = mysqli_query($this->con, "INSERT INTO MEDIA VALUES('','$body','$added_by','$user_to','$date_added','no','0', '$imageName')");
 			$returned_id = mysqli_insert_id($this->con);
 
 			//insert notification
@@ -118,6 +118,7 @@ class Post {
 				$body = $row['BODY'];
 				$added_by = $row['ADDED_BY'];
 				$date_time = $row['DATE_ADDED'];
+				$imagePath = $row['IMAGE'];
 
 				//Prepare user_to string so it can be included even if not posted to user
 				if($row['USER_TO'] == 'none') {
@@ -242,6 +243,16 @@ class Post {
 							$time_message = $interval->s . " seconds ago";
 						} 
 					}
+
+					if($imagePath != "") {
+						$imageDiv = "<div class='postedImage'>
+										<img src='$imagePath'>
+									</div>";
+					}
+					else {
+						$imageDiv = "";
+					}
+
 					$str .= "<div class='status_posts' onClick='javacript:toggle$id()'>
 								<div class='post_profile_pic'>
 									<img src='$profile_pic' width='50'>
@@ -254,6 +265,7 @@ class Post {
 								<div id='post_body'>
 									$body
 									<br>
+									$imageDiv
 									<br>
 									<br>	
 								</div>
@@ -305,7 +317,6 @@ class Post {
 		}
 
 		echo $str;
-
 	}
 
 
@@ -509,7 +520,6 @@ class Post {
 		}
 
 		echo $str;
-
 	}
 
 	public function getSinglePost($post_id) {
