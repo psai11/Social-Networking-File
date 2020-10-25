@@ -37,6 +37,7 @@ if(isset($_POST['post'])) {
 	if($uploadOk) {
 		$post = new Post($con, $userLoggedIn);
 		$post->submitPost($_POST['post_text'], 'none', $imageName);
+		header("Location: index.php");
 	}
 	else {
 		echo "<div style='text-align:center;' class='alert alert-danger'>
