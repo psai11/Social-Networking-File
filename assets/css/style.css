@@ -612,7 +612,7 @@ textarea:focus {
 }
 
 .post_body iframe {
-	align-self: center;
+	margin-top: 20px;
 }
 
 
