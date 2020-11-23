@@ -9,7 +9,7 @@ if(isset($_POST['post'])) {
 	$errorMessage = "";
 
 	if($imageName != "") {
-		$targetDir =  "assets/images/posts";
+		$targetDir =  "assets/images/posts/";
 		$imageName = $targetDir . uniqid() . basename($imageName);
 		$imageFileType = pathinfo($imageName, PATHINFO_EXTENSION);
 
