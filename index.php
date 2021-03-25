@@ -95,10 +95,10 @@ if(isset($_POST['post'])) {
 				$trimmed_word = str_split($word, 14);
 				$trimmed_word = $trimmed_word[0];
 
-				echo "<div style'padding: 1px'>";
-				echo $trimmed_word . $word_dot;
-				echo "<br>";
-				echo "<br></div>";
+				//echo "<div style'padding: 1px'>";
+				//echo $trimmed_word . $word_dot;
+				//echo "<br>";
+				//echo "<br></div>";
 
 
 			}
