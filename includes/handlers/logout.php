@@ -1,5 +1,5 @@
 <?php  
 session_start();
 session_destroy();
-header("Location: ../../Register.php");
+header("Location: ../../register.php");
 ?>
