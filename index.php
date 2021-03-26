@@ -102,6 +102,10 @@ if(isset($_POST['post'])) {
 
 
 			}
+			echo "<div style'padding: 1px'>";
+			echo "This section is under construction..";
+			echo "<br>";
+			echo "<br></div>";
 
 			?>
 			
