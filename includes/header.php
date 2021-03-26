@@ -20,7 +20,7 @@ else {
 
 <html>
 <head>
-	<title>PSC-Network</title>
+	<title>PSC-Connect</title>
 
 	<!-- Javascript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> 
@@ -41,7 +41,7 @@ else {
 	<div class="top_bar">
 
 		<div class="logo">
-			<a href="index.php">PSC-Network</a>
+			<a href="index.php">PSC-Connect</a>
 		</div>
 
 		<div class="search">
