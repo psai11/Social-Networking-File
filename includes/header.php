@@ -21,7 +21,10 @@ else {
 <html>
 <head>
 	<title>PSC-Connect</title>
-	<link rel="shortcut icon" type="text/x-icon" href="assets/images/icons/favicon(1).ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/images/icons/site.webmanifest">
 
 	<!-- Javascript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> 
